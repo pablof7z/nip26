@@ -12,8 +12,12 @@
 </svelte:head>
 
 <div class="flex flex-col items-center min-h-screen justify-center">
+	<h1 class="text-7xl my-3 text-black font-black">
+		NIP-26 Demo
+	</h1>
+	
 	{#if delegation}
-		<h1 class="text-3xl font-black">
+		<h1 class="text-4xl">
 			Delegation token 👇
 		</h1>
 		<code class="
@@ -22,19 +26,36 @@
 			rounded-lg
 			flex flex-col
 		">
-			<div class="flex flex-row gap-3"><b class="w-fit">from:</b><span>{delegation.from}</span></div>
-			<div class="flex flex-row gap-3"><b class="w-fit">to: </b><span>{delegation.to}</span></div>
-			<div class="flex flex-row gap-3"><b class="w-fit">cond:</b><span>{delegation.cond}</span></div>
-			<div class="flex flex-row gap-3"><b class="w-fit">sig:</b><span>{delegation.sig}</span></div>
+			<div class="flex flex-row gap-3">
+				<b class="w-24">from:</b>
+				<span class="w-max">{delegation.from}</span>
+			</div>
+			<div class="flex flex-row gap-3">
+				<b class="w-24">to: </b>
+				<span class="w-max">{delegation.to}</span>
+			</div>
+			<div class="flex flex-row gap-3 whitespace-normal">
+				<b class="w-24">cond:</b>
+				<span class="w-max">{delegation.cond}</span>
+			</div>
+			<div class="flex flex-row gap-3">
+				<b class="w-24">sig:</b>
+				<span class="w-max">{delegation.sig}</span>
+			</div>
 		</code>
 
+		<div class="max-w-prose text-xl leading-8 my-5 text-center">
+			An app using this token can now sign events on your behalf within the conditions
+			set by the delegation token (<code>cond</code>).
+		</div>
+
 		<button
-        on:click={() => { delegation = null}}
-        class="
-        bg-dark-blue-900 dark:bg-purple-1000
-        w-fit
-        p-6
-        text-white tracking-widest rounded-lg
+			on:click={() => { delegation = null}}
+			class="
+			bg-dark-blue-900 dark:bg-purple-1000
+			w-fit
+			p-6
+			text-white tracking-widest rounded-lg
         ">
         <div class="flex flex-row gap-4">
             <span class="font-semibold text-xl">
@@ -43,10 +64,6 @@
         </div>
     </button>
 	{:else}
-		<h1 class="text-7xl text-black font-black">
-			NIP-26 Demo
-		</h1>
-
 		<h2 class="text-xl max-w-prose my-3">
 			Use your NIP-26-compatible browser extension to generate a delegation token.
 		</h2>
